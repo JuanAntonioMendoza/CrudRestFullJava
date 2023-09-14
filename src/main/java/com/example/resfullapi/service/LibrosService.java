@@ -5,7 +5,6 @@ import com.example.resfullapi.repository.LibrosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class LibrosService {
@@ -20,7 +19,7 @@ public class LibrosService {
         return librosRepository.findAll();
     }
 
-    public Optional<Libros> obtenerProductoPorId(Long id) {
+    public Libros obtenerProductoPorId(Long id) {
         return librosRepository.findById(id);
     }
 
