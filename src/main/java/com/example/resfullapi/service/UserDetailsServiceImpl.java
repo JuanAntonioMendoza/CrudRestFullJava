@@ -30,13 +30,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         // "secreto" => [BCrypt] => "$2a$10$56VCAiApLO8NQYeOPiu2De/EBC5RWrTZvLl7uoeC3r7iXinRR1iiq"
         var password = "$2a$10$56VCAiApLO8NQYeOPiu2De/EBC5RWrTZvLl7uoeC3r7iXinRR1iiq";
         Usuario juan = new Usuario(
-                "jcabelloc",
+                "jamendoza",
                 password,
                 Set.of("USER")
         );
 
         Usuario maria = new Usuario(
-                "mlopez",
+                "juan",
                 password,
                 Set.of("ADMIN")
         );

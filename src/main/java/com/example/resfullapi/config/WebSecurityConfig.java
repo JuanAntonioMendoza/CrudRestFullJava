@@ -28,7 +28,8 @@ public class WebSecurityConfig {
                 .csrf().disable() // (2)
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers("/publico/**").permitAll()
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/api/libros/**").permitAll()
+                        //.requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .cors(withDefaults())

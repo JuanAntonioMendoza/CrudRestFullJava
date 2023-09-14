@@ -1,7 +1,11 @@
 package com.example.resfullapi.rest;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import com.example.resfullapi.model.Libros;
+import com.example.resfullapi.repository.LibrosRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +46,7 @@ public class DemoRest {
         logger.info("Esta autenticado {}", auth.isAuthenticated());
 
         Map<String, String> mensaje = new HashMap<>();
-        mensaje.put("contenido", "Hola Peru");
+        mensaje.put("contenido", "Hola");
         return ResponseEntity.ok(mensaje);
     }
 
@@ -97,6 +101,33 @@ public class DemoRest {
             return null;
         }
 
+    }
+
+
+    @Autowired
+    private LibrosRepository librosRepository;
+
+    @GetMapping("/publico/obtenerTodosLosLibros")
+    public List<Libros> obtenerTodosLosLibros() {
+        return librosRepository.findAll();
+    }
+    @GetMapping("/publico/{id}")
+    public Libros obtenerLibroPorId(@PathVariable Long id) {
+        return librosRepository.findById(id).orElse(null);
+    }
+    @PostMapping("/publico/")
+    public Libros crearLibro(@RequestBody Libros libro) {
+        return librosRepository.save(libro);
+    }
+
+    @PutMapping("/{id}")
+    public Libros actualizarLibro(@PathVariable Long id, @RequestBody Libros libro) {
+        libro.setId(id);
+        return librosRepository.save(libro);
+    }
+    @DeleteMapping("/{id}")
+    public void eliminarLibro(@PathVariable Long id) {
+        librosRepository.deleteById(id);
     }
 
 }
